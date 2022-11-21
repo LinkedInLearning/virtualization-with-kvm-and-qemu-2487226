@@ -1,4 +1,4 @@
-# Notes and snippets for __Virtualization with QEMU and KVM__ on LinkedIn Learning
+# Notes and snippets for __Virtualization with KVM and QEMU__ on LinkedIn Learning
 
 This file contains brief notes to accompany the course. See the course for more details and context. Specific implementation on your system will vary.
 

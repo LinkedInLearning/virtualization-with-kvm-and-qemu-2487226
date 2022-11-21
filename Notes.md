@@ -7,7 +7,7 @@ This file contains brief notes to accompany the course. See the course for more 
 To install QEMU on Ubuntu:
 
 ```
-apt install qemu-system
+apt install qemu-kvm
 ```
 
 QEMU commands can be lengthy and we should compose them in text editors instead of the terminal. The following commands are functionally the same but are presented in different ways. When we are satisfied with our command, we can copy it and paste it in the terminal using Ctrl-Shift-V.

@@ -30,7 +30,7 @@ qemu-system-x86_64 \
   -vnc :0 \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
-  -cdrom ubuntu-22.04-desktop-amd64.iso \
+  -cdrom ubuntu-22.04.1-desktop-amd64.iso \
   -boot d 
 ```
 

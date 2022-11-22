@@ -195,7 +195,9 @@ qemu-system-x86_64 \
   -display gtk \
   -vga std \
   -usbdevice tablet \
-  -drive file=disk1.qcow2,if=virtio
+  -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio
+
 ```
 
 Start a guest with an SDL display window and the VirtIO graphics card:
@@ -210,7 +212,9 @@ qemu-system-x86_64 \
   -display sdl \
   -vga virtio \
   -usbdevice tablet \
-  -drive file=disk1.qcow2,if=virtio
+  -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio
+
 ```
 
 ## 02_07 - Sharing files between host and guest
@@ -228,6 +232,7 @@ qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio \
   -virtfs local,path=/home/scott/shared,mount_tag=shared,security_model=mapped
 ```
 
@@ -253,6 +258,7 @@ sudo qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio \
   -device qemu-xhci,id=xhci \
   -device usb-host,bus=xhci.0,vendorid=0x046d,productid=0x0843
 ```
@@ -272,6 +278,7 @@ sudo qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio
   -device qemu-xhci,id=xhci \
   -device usb-host,bus=xhci.0,hostbus=1,hostport=5
 ```

@@ -300,6 +300,7 @@ qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio \
   -netdev user,ipv6=off,id=net0 \
   -device rtl8139,netdev=net0
 ```
@@ -317,6 +318,7 @@ qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio \
   -nic user,model=virtio-net-pci
 ```
 
@@ -335,6 +337,7 @@ qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio \
   -nic user,model=virtio-net-pci \
   -nic user,hostfwd=::2222-:22,hostfwd=::8080-:80
 ```
@@ -354,6 +357,7 @@ qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio \
   -nic none
 ```
 
@@ -407,6 +411,7 @@ qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio \
   -netdev bridge,br=br0,id=net1 \
   -device virtio-net,netdev=net1
 ```
@@ -424,6 +429,7 @@ qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
+  -monitor stdio \
   -nic bridge,br=br0,mac=52:54:00:12:34:57 \
   -device virtio-net
 ```

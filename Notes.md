@@ -444,8 +444,7 @@ qemu-system-x86_64 \
   -usbdevice tablet \
   -drive file=disk2.qcow2,if=virtio \
   -monitor stdio \
-  -nic bridge,br=br0,mac=52:54:00:12:34:57 \
-  -device virtio-net
+  -nic bridge,br=br0,mac=52:54:00:12:34:57,model=virtio-net-pci
 ```
 
 ## 03_07 - Creating a host-only network

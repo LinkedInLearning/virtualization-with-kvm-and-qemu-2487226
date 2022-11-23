@@ -367,8 +367,7 @@ qemu-system-x86_64 \
   -smp 4 \
   -m 8G \
   -k en-us \
-  -display sdl \
-  -vga virtio \
+  -vnc :0
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
   -monitor stdio \

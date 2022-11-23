@@ -353,7 +353,6 @@ qemu-system-x86_64 \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
   -monitor stdio \
-  -nic user,model=virtio-net-pci \
   -nic user,hostfwd=::2222-:22,hostfwd=::8080-:80
 ```
 

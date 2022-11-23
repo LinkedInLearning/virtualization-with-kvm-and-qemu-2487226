@@ -285,7 +285,22 @@ sudo qemu-system-x86_64 \
 
 *Remember: your port's Bus ID and Port ID will be different. Find these values with the command `lsusb` on the host.*
 
-## 03_02 - User-mode networking
+## 03_01 - User-mode networking
+
+```
+qemu-system-x86_64 \
+  -enable-kvm \
+  -cpu host \
+  -smp 4 \
+  -m 8G \
+  -k en-us \
+  -display sdl \
+  -vga virtio \
+  -usbdevice tablet \
+  -drive file=disk1.qcow2,if=virtio
+```
+
+## 03_02 - Network hardware and settings
 
 Provide the guest an emulated RTL8139 network interface connected to a User Mode networking backend `net0`:
 

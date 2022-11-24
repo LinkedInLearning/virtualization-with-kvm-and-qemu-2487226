@@ -406,9 +406,10 @@ Set up the QEMU Bridge Helper:
 
 ```
 sudo chmod u+s /usr/lib/qemu/qemu-bridge-helper
-sudo echo "allow br0" > /etc/qemu/bridge.conf
-sudo chmod o+r /etc/qemu/bridge.conf
+sudo vi /etc/qemu/bridge.conf
 ```
+
+Add the text `allow br0` to the file `/etc/qemu/bridge.conf`.
 
 ## 03_06 - Creating a private network
 
@@ -480,18 +481,18 @@ sudo ip link add br0 type bridge
 sudo ip link set br0 up
 ```
 
-Attach the host's network interface `enp4s0f2` to the bridge:
+Attach the host's network interface `eno1` to the bridge:
 
 ```
-sudo ip link set enp4s0f2 master br0
+sudo ip link set eno1 master br0
 ```
 
 *Remember: your network interface may be different. You can find the identifiers for your host network interfaces by running `ip a` on the host.*
 
-Remove the host's network interface `enp4s0f2` from the bridge:
+Remove the host's network interface `eno1` from the bridge:
 
 ```
-sudo ip link set dev enp4s0f2 nomaster
+sudo ip link set dev eno1 nomaster
 ```
 
 ## 04_01 - Exploring libvirt

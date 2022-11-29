@@ -67,7 +67,7 @@ qemu-system-x86_64 \
 Make a copy of our installed disk image for later:
 
 ```
-cp disk1.qcow2 disk2.qcow
+cp disk1.qcow2 disk2.qcow2
 ```
 
 ## 02_04 - Control and debug a guest with QEMU Monitor

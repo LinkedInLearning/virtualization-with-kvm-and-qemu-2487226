@@ -1,4 +1,4 @@
-# Notes and snippets for __Virtualization with KVM and QEMU__ on LinkedIn Learning
+# Notes and Snippets for __Virtualization with QEMU and KVM__ on LinkedIn Learning
 
 This file contains brief notes to accompany the course. See the course for more details and context. Specific implementation on your system will vary.
 
@@ -10,12 +10,12 @@ To install QEMU on Ubuntu:
 apt install qemu-kvm
 ```
 
-QEMU commands can be lengthy and we should compose them in text editors instead of the terminal. The following commands are functionally the same but are presented in different ways. When we are satisfied with our command, we can copy it and paste it in the terminal using Ctrl-Shift-V.
+QEMU commands can be lengthy and we should compose them in text editors instead of the terminal. The following commands are functionally the same but are presented in different ways. When we are satisfied with our command, we can copy it and paste it in the terminal using Ctrl+Shift+V.
 
 Many options presented on the same line:
 
 ```
-qemu-system-x86_64 -enable-kvm -cpu host -smp 4 -m 8G -k en-us -vnc :0 -usbdevice tablet -drive file=disk1.qcow2,if=virtio -cdrom ubuntu-22.04-desktop-amd64.iso -boot d 
+qemu-system-x86_64 -enable-kvm -cpu host -smp 4 -m 8G -k en-us -vnc :0 -usbdevice tablet -drive file=disk1.qcow2,if=virtio -cdrom ubuntu-22.04.1-desktop-amd64.iso -boot d 
 ```
 
 The same options presented with line-continuation characters ( \\ ) to make the command more readable:
@@ -44,7 +44,7 @@ qemu-img create -f qcow2 disk1.qcow2 50G
 
 ## 02_02 - Creating a Virtual Machine
 
-Create a basic QEMU guest using KVM, 4 vCPUs, and 8GB of RAM, with a VNC display at port 5900 on the host:
+Create a basic QEMU guest using KVM, 4 vCPUs, and 8 GB of RAM, with a VNC display at port 5900 on the host:
 
 ```
 qemu-system-x86_64 \
@@ -67,12 +67,12 @@ qemu-system-x86_64 \
 Make a copy of our installed disk image for later:
 
 ```
-cp disk1.qcow2 disk2.qcow2
+cp disk1.qcow2 disk2.qcow
 ```
 
 ## 02_04 - Control and debug a guest with QEMU Monitor
 
-Start a guest with the QEMU Monitor available for control and troubleshooting:
+Start a guest with the QEMU monitor available for control and troubleshooting:
 
 ```
 qemu-system-x86_64 \
@@ -102,13 +102,13 @@ qemu-system-x86_64 \
   -monitor stdio
 ```
 
-Set or change the VNC password from the QEMU Monitor:
+Set or change the VNC password from the QEMU monitor:
 
 ```
 change vnc password
 ```
 
-Send the shutdown signal to a guest in QEMU Monitor:
+Send the shutdown signal to a guest in QEMU monitor:
 
 ```
 system_powerdown
@@ -148,7 +148,7 @@ sudo modprobe nbd
 Attach the disk image as an NBD device:
 
 ```
-sudo qemu-nbd --connect=/dev/nbd0 /home/scott/disk.qcow2
+sudo qemu-nbd --connect=/dev/nbd0 /home/scott/disk1.qcow2
 ```
 
 Find the appropriate partition to mount:
@@ -181,6 +181,11 @@ Unmount the partition:
 sudo umount /mnt/mydisk
 ```
 
+Detach the NBD device:
+```
+sudo qemu-nbd -d /dev/nbd0
+```
+
 ## 02_06 - Guest graphics and display options
 
 Start a guest with a GTK display window and the Standard VGA graphics card:
@@ -197,10 +202,9 @@ qemu-system-x86_64 \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
   -monitor stdio
-
 ```
 
-Start a guest with an SDL display window and the VirtIO graphics card:
+Start a guest with an SDL display window and the virtio graphics card:
 
 ```
 qemu-system-x86_64 \
@@ -214,7 +218,6 @@ qemu-system-x86_64 \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
   -monitor stdio
-
 ```
 
 ## 02_07 - Sharing files between host and guest
@@ -278,31 +281,16 @@ sudo qemu-system-x86_64 \
   -vga virtio \
   -usbdevice tablet \
   -drive file=disk1.qcow2,if=virtio \
-  -monitor stdio
+  -monitor stdio \
   -device qemu-xhci,id=xhci \
   -device usb-host,bus=xhci.0,hostbus=1,hostport=5
 ```
 
 *Remember: your port's Bus ID and Port ID will be different. Find these values with the command `lsusb` on the host.*
 
-## 03_01 - User-mode networking
+## 03_02 - User-mode networking
 
-```
-qemu-system-x86_64 \
-  -enable-kvm \
-  -cpu host \
-  -smp 4 \
-  -m 8G \
-  -k en-us \
-  -display sdl \
-  -vga virtio \
-  -usbdevice tablet \
-  -drive file=disk1.qcow2,if=virtio
-```
-
-## 03_02 - Network hardware and settings
-
-Provide the guest an emulated RTL8139 network interface connected to a User Mode networking backend `net0`:
+Provide the guest an emulated RTL8139 network interface connected to a user mode networking back end `net0`:
 
 ```
 qemu-system-x86_64 \
@@ -320,7 +308,7 @@ qemu-system-x86_64 \
   -device rtl8139,netdev=net0
 ```
 
-Provide the guest a VirtIO network interface using the `-nic` option:
+Provide the guest a virto network interface using the `-nic` option:
 
 ```
 qemu-system-x86_64 \
@@ -443,7 +431,7 @@ qemu-system-x86_64 \
   -display sdl \
   -vga virtio \
   -usbdevice tablet \
-  -drive file=disk2.qcow2,if=virtio \
+  -drive file=disk1.qcow2,if=virtio \
   -monitor stdio \
   -nic bridge,br=br0,mac=52:54:00:12:34:57,model=virtio-net-pci
 ```
@@ -453,7 +441,7 @@ qemu-system-x86_64 \
 Add the host to the bridge `br0`
 
 ```
-sudo ip addr add 10.10.10.1/24 dev br0
+sudo ip address add 10.10.10.1/24 dev br0
 ```
 
 Start a DHCP server using `dnsmasq` on the host to provide addresses within the bridged network:
@@ -511,7 +499,7 @@ Install virt-manager on the host:
 sudo apt install virt-manager
 ```
 
-## 04_03 - Exploring Virsh
+## 04_03 - Exploring virsh
 
 Start virsh in interactive mode on the host:
 

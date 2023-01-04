@@ -431,7 +431,7 @@ qemu-system-x86_64 \
   -display sdl \
   -vga virtio \
   -usbdevice tablet \
-  -drive file=disk1.qcow2,if=virtio \
+  -drive file=disk2.qcow2,if=virtio \
   -monitor stdio \
   -nic bridge,br=br0,mac=52:54:00:12:34:57,model=virtio-net-pci
 ```

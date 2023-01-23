@@ -1,34 +1,20 @@
 # Virtualization with KVM and Qemu
 This is the repository for the LinkedIn Learning course Virtualization with KVM and Qemu. The full course is available from [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
-## Instructions
-This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
+![Virtualization with KVM and Qemu][lil-thumbnail-url] 
 
-## Branches
-The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter. 
-Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `main` branch holds the final state of the code when in the course.
-
-When switching from one exercise files branch to the next after making changes to the files, you may get a message like this:
-
-    error: Your local changes to the following files would be overwritten by checkout:        [files]
-    Please commit your changes or stash them before you switch branches.
-    Aborting
-
-To resolve this issue:
-	
-    Add changes to git using this command: git add .
-	Commit changes using this command: git commit -m "some message"
-
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
+Qemu and KVM are two of the most powerful virtualization tools on the market. Together, they provide lightning-fast hardware emulation and system virtualization on Linux systems, enabling solutions for modern IT workflows that utilize virtual devices and virtual machines. In this course, instructor Scott Simpson gives a comprehensive overview of emulation and virtualization and shows you how to use these two important technologies to configure, work with, and manage virtual systems. Learn about the fundamentals of effective resource planning and virtual network management. Along the way, survey a few of the most commonly used tools for virtual machine management such as libvirt, virsh, and virt-manager.
 
 
-[0]: # (Replace these placeholder URLs with actual course URLs)
+### Instructor
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+Scott Simpson 
+                            
+Senior Staff Instructor
 
+                            
+
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/scott-simpson).
+
+[lil-course-url]: https://www.linkedin.com/learning/virtualization-with-kvm-and-qemu?dApp=59033956
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/C560DAQFEX2jUB0MSnQ/learning-public-crop_675_1200/0/1674068386386?e=2147483647&v=beta&t=G_vkePfB_2bkqxQcg4GE2ats7LIV7UuisFzAB8jm1WY
